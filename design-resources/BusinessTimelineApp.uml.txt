@@ -1,0 +1,113 @@
+@startuml
+
+package "MVC"{
+class AppController{
+        BusinessTimelineHandler timelineHandler
+	View view
+        Model model
+        int eventCount
+        
+        constructor()
+	loadElements()
+	DOMEvents()
+	onUserCreation()
+        onTimelineCreation()
+}
+
+class View{
+	getUserForm()
+        getTimeline()
+}
+
+class Model{
+        String[] timezones
+        constructor()
+}
+
+}
+
+class BusinessTimelineHandler{
+	User[] users
+	BusinessTimeline[] timelines
+        addUser(User user)
+        addTimeline(BusinessTimeline timeline)
+        getTimelineAsColData()
+}
+
+class BusinessTimeline{
+	String timezone
+        WorkTime[] calculatedWorkTime
+        Approach approach
+}
+
+class WorkTimeColApproach{
+        int totalCols = 24 *2
+        int[] startPoints
+        int[] endPoints
+}
+
+package "BUILDERS" #DDDDDD {
+
+class BusinessTimelineBuilder{
+        String timezone
+        User user
+        Approach approach
+        Boolean canBuild
+        
+        addTimezone(String timezone) : this
+        addUser(User user) : this
+        addAproach(Approach approach) : this
+        canBuild()
+        buildBusinessTimeline()
+}
+
+class UserBuilder{
+        String name
+        String timezone
+        WorkTime[] schedule
+        Boolean canBuild
+        
+        addName(String name) : this
+        addTimezone(String timezone) : this
+        addWorkTime(WorkTime workTime) : this
+        canBuild()
+        buildUser()
+
+}
+}
+
+class User{
+	String name
+	String timezone
+	WorkTime[] schedule
+        addWorkTime(WorkTime workTime)
+}
+
+class WorkTime{
+	Hour startTime
+	Hour endTime
+        constructor(Hour start, Hour end)
+}
+
+class Hour{
+	int startHour
+	int startMin
+        constructor(int hour, int min)
+}
+
+BUILDERS -up-> AppController
+
+AppController o-- BusinessTimelineHandler
+AppController o-- View
+AppController o-- Model
+
+WorkTime o-- Hour
+
+User o-- WorkTime
+
+BusinessTimelineHandler o-- User
+BusinessTimelineHandler o-- BusinessTimeline
+
+BusinessTimeline o-- WorkTimeColApproach
+
+@enduml
