@@ -23,9 +23,10 @@ function createUser(){
 }
 
 function createTimeline(user){
+    let timezone = "America/Denver";
     let timeline = false;
     let builder = new BusinessTimelineBuilder()
-        .addTimezone("America/Chicago")
+        .addTimezone(timezone)
         .addUser(user);
     if(builder.canBuild()) timeline = builder.buildTimeline();
 

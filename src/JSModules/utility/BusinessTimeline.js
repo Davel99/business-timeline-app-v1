@@ -1,4 +1,5 @@
 export default class BusinessTimeline{
+    format = "en-US"
     constructor(timezone){
         this.timezone = timezone;
     }
@@ -14,6 +15,9 @@ export default class BusinessTimeline{
 
             startDate.setHours(start.hour, start.min, 0);
             endDate.setHours(end.hour, end.min, 0);
+
+            startDate = startDate.toLocaleString(this.format, {timeZone: this.timezone});
+            endDate = endDate.toLocaleString(this.format, {timeZone: this.timezone});
 
             dates.push([startDate, endDate]);
         });
