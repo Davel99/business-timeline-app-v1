@@ -1,3 +1,6 @@
+import WorkTime from "./WorkTime";
+import Hour from "./Hour";
+
 export default class BusinessTimeline{
     format = "en-US"
     constructor(timezone){
@@ -16,10 +19,13 @@ export default class BusinessTimeline{
             startDate.setHours(start.hour, start.min, 0);
             endDate.setHours(end.hour, end.min, 0);
 
-            startDate = startDate.toLocaleString(this.format, {timeZone: this.timezone});
-            endDate = endDate.toLocaleString(this.format, {timeZone: this.timezone});
+            startDate = new Date(startDate.toLocaleString(this.format, {timeZone: this.timezone}));
+            endDate = new Date(endDate.toLocaleString(this.format, {timeZone: this.timezone}));
 
-            dates.push([startDate, endDate]);
+            let startHour = new Hour(startDate.getHours(), startDate.getMinutes());
+            let endHour = new Hour(endDate.getHours(), endDate.getMinutes());
+
+            dates.push(new WorkTime(startHour, endHour));
         });
         this.calculatedWorkTime = dates;
         return this.calculatedWorkTime;
