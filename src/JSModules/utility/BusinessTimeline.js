@@ -3,7 +3,7 @@ export default class BusinessTimeline{
         this.timezone = timezone;
     }
 
-    calculateWorkTime(){
+    calculateWorkTime(workTime){
         let data = [];
         this.calculatedWorkTime = data;
         return this.calculatedWorkTime;
