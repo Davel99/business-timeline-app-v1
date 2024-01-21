@@ -110,13 +110,33 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/JSModules/builders/UserBuilder.js":
+/*!***********************************************!*\
+  !*** ./src/JSModules/builders/UserBuilder.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ UserBuilder)\n/* harmony export */ });\n/* harmony import */ var _utility_User__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utility/User */ \"./src/JSModules/utility/User.js\");\n\r\n\r\nclass UserBuilder {\r\n    name;\r\n    timezone;\r\n    schedule;\r\n    ready = false;\r\n\r\n    addName(name) {\r\n        this.name = name;\r\n        return this;\r\n    }\r\n    addTimezone(timezone) {\r\n        this.timezone = timezone;\r\n        return this;\r\n    }\r\n    addSchedule(schedule) {\r\n        this.schedule = schedule;\r\n        return this;\r\n    }\r\n\r\n    canBuild() {\r\n        if (\r\n            this.name != null &&\r\n            this.timezone != null &&\r\n            this.schedule != null\r\n        ) {\r\n            this.ready = true;\r\n        }\r\n        return this.ready;\r\n    }\r\n\r\n    buildUser(){\r\n        if(this.ready) return new _utility_User__WEBPACK_IMPORTED_MODULE_0__[\"default\"](this.name, this.timezone, this.schedule);\r\n        return false;\r\n    }\r\n}\n\n//# sourceURL=webpack://business-timeline-app-v1/./src/JSModules/builders/UserBuilder.js?");
+
+/***/ }),
+
+/***/ "./src/JSModules/utility/User.js":
+/*!***************************************!*\
+  !*** ./src/JSModules/utility/User.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ User)\n/* harmony export */ });\nclass User{\r\n    constructor(name, timezone, schedule){\r\n        this.name = name;\r\n        this.timezone = timezone;\r\n        this.schedule = schedule;\r\n    }\r\n}\n\n//# sourceURL=webpack://business-timeline-app-v1/./src/JSModules/utility/User.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\r\n\r\nwindow.onload = (event) => {\r\n    console.log(\"Page is fully loaded\");\r\n};\n\n//# sourceURL=webpack://business-timeline-app-v1/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _JSModules_builders_UserBuilder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./JSModules/builders/UserBuilder */ \"./src/JSModules/builders/UserBuilder.js\");\n\r\n\r\n\r\nwindow.onload = (event) => {\r\n    console.log(\"Page is fully loaded\");\r\n    let userBuilder = new _JSModules_builders_UserBuilder__WEBPACK_IMPORTED_MODULE_1__[\"default\"]()\r\n        .addName(\"hola\")\r\n        .addTimezone(\"mexico\")\r\n        .addSchedule(\"schedule\");\r\n    let readytoBuild = userBuilder.canBuild();\r\n    let user = false;\r\n    if(readytoBuild) {\r\n        user = userBuilder.buildUser();\r\n    }\r\n\r\n    console.log(user);\r\n};\n\n//# sourceURL=webpack://business-timeline-app-v1/./src/index.js?");
 
 /***/ })
 
