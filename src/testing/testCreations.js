@@ -22,6 +22,26 @@ function createUser(){
     return user;
 }
 
+function createUserB(){
+    let user = false;
+    let workTimes = [];
+    let hourA = new Hour(10,30);
+    let hourB = new Hour(22,0);
+    let workTime = new WorkTime(hourA, hourB);
+
+    workTimes.push(workTime);
+
+    let userBuilder = new UserBuilder()
+        .addName("MemberB")
+        .addTimezone("Europe/Volgograd")
+        .addSchedule(workTimes);
+    if (userBuilder.canBuild()) {
+        user = userBuilder.buildUser();
+    }
+    return user;
+
+}
+
 function createTimeline(user){
     let timezone = "America/Denver";
     let timeline = false;
@@ -35,6 +55,7 @@ function createTimeline(user){
 
 const Testing = {
     createUser,
+    createUserB,
     createTimeline
 }
 
