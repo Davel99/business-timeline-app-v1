@@ -136,7 +136,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _JSModules_builders_UserBuilder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./JSModules/builders/UserBuilder */ \"./src/JSModules/builders/UserBuilder.js\");\n\r\n\r\n\r\nwindow.onload = (event) => {\r\n    console.log(\"Page is fully loaded\");\r\n    let userBuilder = new _JSModules_builders_UserBuilder__WEBPACK_IMPORTED_MODULE_1__[\"default\"]()\r\n        .addName(\"hola\")\r\n        .addTimezone(\"mexico\")\r\n        .addSchedule(\"schedule\");\r\n    let readytoBuild = userBuilder.canBuild();\r\n    let user = false;\r\n    if(readytoBuild) {\r\n        user = userBuilder.buildUser();\r\n    }\r\n\r\n    console.log(user);\r\n};\n\n//# sourceURL=webpack://business-timeline-app-v1/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _testing_testCreations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./testing/testCreations */ \"./src/testing/testCreations.js\");\n\r\n\r\n\r\nwindow.onload = (event) => {\r\n    console.log(\"Page is fully loaded\");\r\n    let user = _testing_testCreations__WEBPACK_IMPORTED_MODULE_1__[\"default\"].createUser();\r\n    console.log(user);\r\n};\r\n\r\n\n\n//# sourceURL=webpack://business-timeline-app-v1/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/testing/testCreations.js":
+/*!**************************************!*\
+  !*** ./src/testing/testCreations.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _JSModules_builders_UserBuilder__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../JSModules/builders/UserBuilder */ \"./src/JSModules/builders/UserBuilder.js\");\n\r\n\r\nfunction createUser(){\r\n    let user = false;\r\n    let userBuilder = new _JSModules_builders_UserBuilder__WEBPACK_IMPORTED_MODULE_0__[\"default\"]()\r\n        .addName(\"hola\")\r\n        .addTimezone(\"mexico\")\r\n        .addSchedule(\"schedule\");\r\n    if (userBuilder.canBuild()) {\r\n        user = userBuilder.buildUser();\r\n    }\r\n    return user;\r\n}\r\n\r\nconst Testing = {\r\n    createUser\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Testing);\n\n//# sourceURL=webpack://business-timeline-app-v1/./src/testing/testCreations.js?");
 
 /***/ })
 
