@@ -15,22 +15,20 @@ export default class BusinessTimelineBuilder{
     }
 
     canBuild(){
-        this.timezone = t;
-        this.user = u;
+        let t = this.timezone;
+        let u = this.user;
         if(
             (t != null) &&
             (u != null)
         ){
             this.canBuildTimeline = true;
         }
-
         return this.canBuildTimeline;
     }
 
     buildTimeline(){
-
         let timeline = new BusinessTimeline(this.timezone);
-        timeline.calculateWorkTime(user.schedule);
+        timeline.calculateWorkTime(this.user.schedule);
         return timeline;
     }
 
