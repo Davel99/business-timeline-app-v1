@@ -1,8 +1,11 @@
 import WorkTime from "./WorkTime";
 import Hour from "./Hour";
+import WorkTimeColApproach from './WorkTimeColApproach';
 
 export default class BusinessTimeline{
     format = "en-US"
+    calculatedWorkTime = []
+
     constructor(timezone){
         this.timezone = timezone;
     }
@@ -29,5 +32,10 @@ export default class BusinessTimeline{
         });
         this.calculatedWorkTime = dates;
         return this.calculatedWorkTime;
+    }
+
+    getColData(){
+        let helper = new WorkTimeColApproach();
+        let response =  helper.getTimelinePoints(this.calculatedWorkTime);
     }
 }
