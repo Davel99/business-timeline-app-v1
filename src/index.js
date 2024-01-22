@@ -14,6 +14,13 @@ window.onload = (event) => {
     console.log(timelineA);
     let timelineB = Testing.createTimeline(userB);
     console.log(timelineB);
-    
+
+    console.log("CREATING HANDLER");
+    let userArray = [user, userB];
+    let timelineArray = [timelineA, timelineB];
+    let handler = Testing.handleTimelines(userArray, timelineArray);
+
+    let pointData = handler.getTimelineAsColData();
+    console.log(pointData);    
 };
 

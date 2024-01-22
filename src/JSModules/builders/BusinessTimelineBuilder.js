@@ -28,7 +28,7 @@ export default class BusinessTimelineBuilder{
 
     buildTimeline(){
         let timeline = new BusinessTimeline(this.timezone);
-        timeline.calculateWorkTime(this.user.schedule);
+        timeline.calculateWorkTime(this.user.schedule, this.user.timezone);
         return timeline;
     }
 
